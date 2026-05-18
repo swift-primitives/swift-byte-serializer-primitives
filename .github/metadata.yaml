@@ -1,0 +1,10 @@
+# .github/metadata.yaml
+description: "Byte-specific serializers for Swift — Byte.Serializer and Byte.Literal.Serializer for emitting bytes to RangeReplaceableCollection buffers, built on swift-serializer-primitives."
+topics:
+  - primitives
+  - serializer
+  - byte
+  - swift
+homepage: "https://swift-institute.org"
+readme:
+  family: E
