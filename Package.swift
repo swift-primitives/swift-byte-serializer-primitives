@@ -22,15 +22,15 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../swift-serializer-primitives"),
-        .package(path: "../swift-byte-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-serializer-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-byte-primitives.git", branch: "main"),
     ],
     targets: [
         .target(
             name: "Byte Serializer Primitives",
             dependencies: [
-                .product(name: "Serializer Namespace", package: "swift-serializer-primitives"),
-                .product(name: "Serializer Primitives Core", package: "swift-serializer-primitives"),
+                .product(name: "Serializer Primitive", package: "swift-serializer-primitives"),
+                .product(name: "Serializer Primitives", package: "swift-serializer-primitives"),
                 .product(name: "Byte Primitives", package: "swift-byte-primitives"),
             ]
         ),
