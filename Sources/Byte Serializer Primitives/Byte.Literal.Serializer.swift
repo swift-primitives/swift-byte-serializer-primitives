@@ -13,11 +13,6 @@ public import Byte_Primitives
 public import Serializer_Primitive
 public import Serializer_Primitives
 
-extension Byte {
-    /// A namespace for byte-literal types — fixed byte sequences interpreted as literal patterns to match or emit.
-    public enum Literal {}
-}
-
 extension Byte.Literal {
     /// A serializer that emits a fixed byte sequence.
     ///
@@ -38,10 +33,12 @@ extension Byte.Literal {
         /// Creates a serializer that emits the UTF-8 bytes of the given static string.
         @inlinable
         public init(_ string: StaticString) {
-            self.bytes = unsafe Swift.Array(
-                string.utf8Start.withMemoryRebound(to: UInt8.self, capacity: string.utf8CodeUnitCount) {
-                    unsafe UnsafeBufferPointer(start: $0, count: string.utf8CodeUnitCount)
-                }.lazy.map(Byte.init)
+            unsafe (
+                self.bytes = Swift.Array(
+                    string.utf8Start.withMemoryRebound(to: UInt8.self, capacity: string.utf8CodeUnitCount) {
+                        unsafe UnsafeBufferPointer(start: $0, count: string.utf8CodeUnitCount)
+                    }.lazy.map(Byte.init)
+                )
             )
         }
     }
