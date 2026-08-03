@@ -33,13 +33,11 @@ extension Byte.Literal {
         /// Creates a serializer that emits the UTF-8 bytes of the given static string.
         @inlinable
         public init(_ string: StaticString) {
-            unsafe (
-                self.bytes = Swift.Array(
-                    string.utf8Start.withMemoryRebound(to: UInt8.self, capacity: string.utf8CodeUnitCount) {
-                        unsafe UnsafeBufferPointer(start: $0, count: string.utf8CodeUnitCount)
-                    }.lazy.map(Byte.init)
-                )
-            )
+            unsafe (self.bytes = Swift.Array(
+                string.utf8Start.withMemoryRebound(to: UInt8.self, capacity: string.utf8CodeUnitCount) {
+                    unsafe UnsafeBufferPointer(start: $0, count: string.utf8CodeUnitCount)
+                }.lazy.map(Byte.init)
+            ))
         }
     }
 }
