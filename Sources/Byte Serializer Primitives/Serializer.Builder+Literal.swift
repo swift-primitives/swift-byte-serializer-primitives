@@ -10,7 +10,7 @@
 
 public import Byte_Primitives
 public import Serializer_Primitive
-public import Serializer_Primitives
+import Serializer_Primitives
 
 // MARK: - Serializer.Builder String Literal Support
 

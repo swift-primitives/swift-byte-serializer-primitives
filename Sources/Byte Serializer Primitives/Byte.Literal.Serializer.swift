@@ -11,7 +11,7 @@
 
 public import Byte_Primitives
 public import Serializer_Primitive
-public import Serializer_Primitives
+import Serializer_Primitives
 
 extension Byte.Literal {
     /// A serializer that emits a fixed byte sequence.
