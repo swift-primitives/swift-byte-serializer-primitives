@@ -1,8 +1,6 @@
 import Byte_Serializer_Primitives_Test_Support
 import Testing
 
-// MARK: - Test Suite Structure
-
 @Suite
 struct `Byte.Literal.Serializer Tests` {
     @Suite struct Unit {}
@@ -10,8 +8,6 @@ struct `Byte.Literal.Serializer Tests` {
     @Suite struct Integration {}
     @Suite(.serialized) struct Performance {}
 }
-
-// MARK: - Unit Tests
 
 extension `Byte.Literal.Serializer Tests`.Unit {
     @Test
@@ -45,8 +41,6 @@ extension `Byte.Literal.Serializer Tests`.Unit {
     }
 }
 
-// MARK: - Edge Case Tests
-
 extension `Byte.Literal.Serializer Tests`.`Edge Case` {
     @Test
     func `empty literal emits nothing`() {
@@ -69,13 +63,11 @@ extension `Byte.Literal.Serializer Tests`.`Edge Case` {
     }
 }
 
-// MARK: - Integration Tests
-
 extension `Byte.Literal.Serializer Tests`.Integration {
     @Test
     func `Byte.Literal.Serializer composes with Byte.Serializer`() {
         let prefix: Byte.Literal.Serializer<[Byte]> = "hi"
-        let suffix = Byte.Serializer<[Byte]>(0x21)  // '!'
+        let suffix = Byte.Serializer<[Byte]>(0x21)
         var buffer: [Byte] = []
 
         prefix.serialize((), into: &buffer)

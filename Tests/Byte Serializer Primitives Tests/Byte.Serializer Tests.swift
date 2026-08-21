@@ -1,13 +1,6 @@
 import Byte_Serializer_Primitives_Test_Support
 import Testing
 
-// MARK: - Test Suite Structure
-//
-// Compound name backticked per the institute test-suite convention
-// (matches swift-byte-parser-primitives' `Byte.Parser Tests` — backticked
-// compound names are accepted by [SWIFT-TEST-002]; bare compound names
-// are not).
-
 @Suite
 struct `Byte.Serializer Tests` {
     @Suite struct Unit {}
@@ -15,8 +8,6 @@ struct `Byte.Serializer Tests` {
     @Suite struct Integration {}
     @Suite(.serialized) struct Performance {}
 }
-
-// MARK: - Unit Tests
 
 extension `Byte.Serializer Tests`.Unit {
     @Test
@@ -52,15 +43,13 @@ extension `Byte.Serializer Tests`.Unit {
 
     @Test
     func `Byte literal flows through ExpressibleByIntegerLiteral`() {
-        // 0x55 must infer as Byte (not UInt8) at the call site.
+
         let serializer = Byte.Serializer<[Byte]>(0x55)
         var buffer: [Byte] = []
         serializer.serialize((), into: &buffer)
         #expect(buffer == [0x55])
     }
 }
-
-// MARK: - Edge Case Tests
 
 extension `Byte.Serializer Tests`.`Edge Case` {
     @Test
@@ -79,8 +68,6 @@ extension `Byte.Serializer Tests`.`Edge Case` {
         #expect(buffer == [0xFF])
     }
 }
-
-// MARK: - Integration Tests
 
 extension `Byte.Serializer Tests`.Integration {
     @Test
